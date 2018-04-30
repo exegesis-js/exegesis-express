@@ -4,7 +4,9 @@
   "description": "Express middleware to handle OpenAPI 3.x.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": ["dist/**/*"],
+  "files": [
+    "dist/**/*"
+  ],
   "scripts": {
     "test": "npm run build && npm run lint && npm run test:unittest",
     "precommit:test": "npm run build && lint-staged && npm run precommit:unittest",
@@ -67,7 +69,7 @@
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
     "coveralls": "^3.0.0",
-    "exegesis": "0.0.2",
+    "exegesis": "^0.0.2",
     "markdownlint": "^0.8.1",
     "markdownlint-cli": "^0.8.1",
     "mocha": "^5.1.1",

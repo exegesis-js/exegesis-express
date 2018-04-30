@@ -1,6 +1,14 @@
 import * as exegesis from 'exegesis';
 export * from 'exegesis/lib/types/index';
 
+/**
+ * Returns a connect/express middleware function which implements the API.
+ *
+ * @param openApiDoc - A string, representing a path to the OpenAPI document,
+ *   or a JSON object.
+ * @param options - Options.  See docs/options.md
+ * @returns - an express middleware function.
+ */
 function middleware(
     openApiDoc: string | exegesis.oas3.OpenAPIObject,
     options?: exegesis.ExegesisOptions
@@ -12,8 +20,7 @@ function middleware(
  * @param openApiDoc - A string, representing a path to the OpenAPI document,
  *   or a JSON object.
  * @param options - Options.  See docs/options.md
- * @param [done] - Optional callback.
- * @returns - null if `done` is provided, otherwise a Promise<MiddlewareFunction>.
+ * @param done - Callback.  Returns an express middleware function.
  */
 function middleware(
     openApiDoc: string | exegesis.oas3.OpenAPIObject,
