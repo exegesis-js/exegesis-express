@@ -1,0 +1,34 @@
+language: node_js
+node_js:
+  - 'node'
+  - '10'
+  - '8'
+  - '6'
+cache:
+  directories:
+    - ~/.npm
+
+before_install:
+  - npm install -g npm
+  - npm install -g nsp
+install:
+  - travis_retry npm install
+before_script:
+  - nsp check
+after_script:
+  # Only the first job will upload the lockfile
+after_success:
+  - 'cat ./coverage/lcov.info | ./node_modules/.bin/coveralls'
+
+# Uncomment this block to enable semantic-release.
+
+# jobs:
+#   include:
+#     - stage: release
+#       node_js: lts/*
+#       before_install:
+#         - npm install -g npm
+#       install:
+#         - travis_retry npm install
+#       script:
+#         - npm run semantic-release

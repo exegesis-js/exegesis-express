@@ -1,0 +1,10 @@
+node_modules
+/notes.md
+/dist
+/types
+/.nyc_output
+/coverage
+/npm-debug.log
+/yarn-error.log
+/package-lock.json
+/yarn.lock
