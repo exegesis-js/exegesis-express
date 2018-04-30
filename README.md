@@ -11,15 +11,8 @@
 >
 > -- No dictionary ever
 
-This library implements a framework-agnostic server side implementation of
+This library implements an Express middleware for
 [OpenAPI 3.x](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md#requestBodyObject).
-
-You probably don't want to be using this library directly.  Have a look at:
-
-* [exegesis-express](https://github.com/exegesis-js/exegesis-express) - Middleware
-  for serving OpenAPI 3.x APIs from [express](https://expressjs.com/).
-* [exegesis-connect](https://github.com/exegesis-js/exegesis-express) - Middleware
-  for serving OpenAPI 3.x APIs from [connect](https://github.com/senchalabs/connect).
 
 ## WARNING
 
@@ -28,6 +21,42 @@ You probably don't want to be using this library directly.  Have a look at:
 This is very much a work in progress.  Wait for the v1.0.0 release, coming soon!  :)
 
 ## Usage
+
+```js
+import express from 'express';
+import http from 'http';
+import * as exegesisExpress from 'exegesis-express';
+
+async function createServer() {
+    // See https://github.com/exegesis-js/exegesis/blob/master/docs/Options.md
+    const options {
+        controllers: path.resolve(__dirname, './integrationSample/controllers'),
+        securityPlugins: {
+            sessionKey: sessionAuthSecurityPlugin
+        }
+    };
+
+    const exegesisMiddleware = await exegesisExpress.middleware(
+        path.resolve(__dirname, './integrationSample/openapi.yaml'),
+        options
+    );
+
+    const app = express();
+    app.use(exegesisMiddleware);
+    app.use((err, req, res, _next) => {
+        if(err) {
+            res.writeHead(500);
+            res.end(`Internal error: ${err.message}`);
+        } else {
+            res.writeHead(404);
+            res.end();
+        }
+    });
+
+    const server = http.createServer(app);
+    server.listen(3000);
+}
+```
 
 ## TODO
 
