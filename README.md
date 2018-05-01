@@ -1,8 +1,8 @@
 # exegesis-express
 
 [![NPM version](https://badge.fury.io/js/exegesis-express.svg)](https://npmjs.org/package/exegesis-express)
-[![Build Status](https://travis-ci.org/exegesis/exegesis-express.svg)](https://travis-ci.org/exegesis/exegesis-express)
-[![Coverage Status](https://coveralls.io/repos/exegesis/exegesis-express/badge.svg)](https://coveralls.io/r/exegesis/exegesis-express)
+[![Build Status](https://travis-ci.org/exegesis-js/exegesis-express.svg)](https://travis-ci.org/exegesis-js/exegesis-express)
+[![Coverage Status](https://coveralls.io/repos/exegesis-js/exegesis-express/badge.svg)](https://coveralls.io/r/exegesis-js/exegesis-express)
 [![Greenkeeper badge](https://badges.greenkeeper.io/exegesis-js/exegesis-express.svg)](https://greenkeeper.io/)
 
 > ## *exegesis*
