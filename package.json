@@ -52,7 +52,7 @@
   "homepage": "https://github.com/exegesis-js/exegesis-express#readme",
   "devDependencies": {
     "@types/express": "^4.11.1",
-    "@types/node": "^10.0.2",
+    "@types/node": "^6.0.0",
     "express": "^4.16.3",
     "husky": "^1.0.0-rc.2",
     "supertest-fetch": "^1.0.1"
@@ -79,5 +79,10 @@
     "tslint": "^5.9.1",
     "typescript": "^2.8.3",
     "validate-commit-msg": "^2.14.0"
+  },
+  "greenkeeper": {
+    "ignore": [
+      "@types/node"
+    ]
   }
 }
