@@ -5,7 +5,7 @@ import { makeFetch } from 'supertest-fetch';
 
 import * as exegesisExpress from '../src';
 
-async function sessionAuthSecurityPlugin(
+async function sessionAuthenticator(
     context: exegesisExpress.ExegesisPluginContext
 ) : Promise<exegesisExpress.ExegesisAuthenticated | undefined> {
     const session = context.req.headers.session;
@@ -24,8 +24,8 @@ async function sessionAuthSecurityPlugin(
 async function createServer() {
     const options : exegesisExpress.ExegesisOptions = {
         controllers: path.resolve(__dirname, './integrationSample/controllers'),
-        securityPlugins: {
-            sessionKey: sessionAuthSecurityPlugin
+        authenticators: {
+            sessionKey: sessionAuthenticator
         },
         controllersPattern: "**/*.@(ts|js)"
     };
@@ -88,14 +88,14 @@ describe('integration', function() {
             });
     });
 
-    it('should require authentication from a security plugin', async function() {
+    it('should require authentication from an authenticator', async function() {
         const fetch = makeFetch(this.server);
         await fetch(`/secure`)
             .expect(403)
             .expectBody({message:"Must authenticate using one of the following schemes: sessionKey."});
     });
 
-    it('should return an error from a security plugin', async function() {
+    it('should return an error from an authenticator', async function() {
         const fetch = makeFetch(this.server);
         await fetch(`/secure`, {
             headers: {session: 'wrong'}
@@ -104,7 +104,7 @@ describe('integration', function() {
             .expectBody({message: "Invalid session."});
     });
 
-    it('should require authentication from a security plugin', async function() {
+    it('should require authentication from an authenticator', async function() {
         const fetch = makeFetch(this.server);
         await fetch(`/secure`, {
             headers: {session: 'secret'}
