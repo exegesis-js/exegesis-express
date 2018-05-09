@@ -7,7 +7,7 @@ import * as exegesisExpress from '../src';
 
 async function sessionAuthenticator(
     context: exegesisExpress.ExegesisPluginContext
-) : Promise<exegesisExpress.ExegesisAuthenticated | undefined> {
+) : Promise<exegesisExpress.AuthenticationSuccess | undefined> {
     const session = context.req.headers.session;
     if(!session || typeof(session) !== 'string') {
         return undefined;
@@ -16,6 +16,7 @@ async function sessionAuthenticator(
         throw context.makeError(403, "Invalid session.");
     }
     return {
+        type: 'success',
         user: {name: 'jwalton'},
         roles: ['readWrite', 'admin']
     };
@@ -91,8 +92,10 @@ describe('integration', function() {
     it('should require authentication from an authenticator', async function() {
         const fetch = makeFetch(this.server);
         await fetch(`/secure`)
-            .expect(403)
-            .expectBody({message:"Must authenticate using one of the following schemes: sessionKey."});
+            .expect(401)
+            .expectBody({message:
+                "Must authenticate using one of the following schemes: sessionKey."
+            });
     });
 
     it('should return an error from an authenticator', async function() {
@@ -104,7 +107,7 @@ describe('integration', function() {
             .expectBody({message: "Invalid session."});
     });
 
-    it('should require authentication from an authenticator', async function() {
+    it('should authenticate correctly', async function() {
         const fetch = makeFetch(this.server);
         await fetch(`/secure`, {
             headers: {session: 'secret'}
@@ -112,6 +115,7 @@ describe('integration', function() {
             .expect(200)
             .expectBody({
                 sessionKey: {
+                    type: 'success',
                     user: {name: 'jwalton'},
                     roles: ['readWrite', 'admin']
                 }

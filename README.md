@@ -44,14 +44,12 @@ async function createServer() {
     // If you have any body parsers, this should go before them.
     app.use(exegesisMiddleware);
 
-    app.use((err, req, res, _next) => {
-        if(err) {
-            res.writeHead(500);
-            res.end(`Internal error: ${err.message}`);
-        } else {
-            res.writeHead(404);
-            res.end();
-        }
+    app.use((req, res) => {
+        res.status(404).json({message: `Not found`});
+    });
+
+    app.use((err, req, res, next) => {
+        res.status(500).json({message: `Internal error: ${err.message}`});
     });
 
     const server = http.createServer(app);
