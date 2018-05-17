@@ -17,7 +17,7 @@
     "lint": "npm run lint:source && npm run lint:markdown && npm run lint:tests",
     "lint:source": "tslint -c tslint.json -t stylish 'src/**/*.ts'",
     "lint:tests": "tslint -c test/tslint.json -t stylish 'test/**/*.ts'",
-    "lint:markdown": "markdownlint src/**/*.md *.md",
+    "lint:markdown": "markdownlint src/**/*.md README.md",
     "prepare": "npm run build",
     "prepublishOnly": "npm run build && npm test",
     "semantic-release": "semantic-release"
