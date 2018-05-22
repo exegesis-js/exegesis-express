@@ -25,6 +25,10 @@ This library implements an Express middleware for
 * [Plugins](https://github.com/exegesis-js/exegesis/tree/master/docs) allow easy extensibility
 * Easy support for [validating custom formats](https://github.com/exegesis-js/exegesis/blob/master/docs/Options.md#customformats)
 
+## Tutorial
+
+Check out the tutorial [here](https://github.com/exegesis-js/exegesis/blob/master/docs/Tutorial.md).
+
 ## Usage
 
 Calling `exegesisExpress.middleware(openApiFile, options)` will return a Promise
@@ -92,12 +96,13 @@ which means non-api paths will not even be sent to the exegesis middleware.
 
 ```js
 import express from 'express';
+import path from 'path';
 import http from 'http';
 import * as exegesisExpress from 'exegesis-express';
 
 async function createServer() {
     // See https://github.com/exegesis-js/exegesis/blob/master/docs/Options.md
-    const options {
+    const options = {
         controllers: path.resolve(__dirname, './controllers')
     };
 
