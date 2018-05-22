@@ -1,6 +1,6 @@
 {
   "name": "exegesis-express",
-  "version": "1.0.0",
+  "version": "0.0.0-semantic-release",
   "description": "Express middleware to handle OpenAPI 3.x.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -61,6 +61,7 @@
     "exegesis": "^1.0.0"
   },
   "devDependencies": {
+    "@jwalton/semantic-release-config": "^1.0.0",
     "@types/express": "^4.11.1",
     "@types/mocha": "^5.2.0",
     "@types/node": "^6.0.109",
@@ -74,7 +75,7 @@
     "markdownlint-cli": "^0.9.0",
     "mocha": "^5.1.1",
     "nyc": "^11.7.2",
-    "semantic-release": "^15.4.0",
+    "semantic-release": "^15.4.1",
     "supertest-fetch": "^1.0.4",
     "ts-node": "^6.0.3",
     "tslint": "^5.10.0",
