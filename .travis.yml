@@ -10,13 +10,12 @@ cache:
 
 before_install:
   - npm install -g npm
-  - npm install -g nsp
   - npm install -g greenkeeper-lockfile@1
 install:
   - travis_retry npm install
 before_script:
-  - nsp check
   - greenkeeper-lockfile-update
+  - npm audit
 after_script:
   # Only the first job will upload the lockfile
   - greenkeeper-lockfile-upload
