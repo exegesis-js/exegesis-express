@@ -56,7 +56,7 @@
     }
   },
   "dependencies": {
-    "exegesis": "^2.0.0"
+    "exegesis": "^2.5.0"
   },
   "devDependencies": {
     "@jwalton/semantic-release-config": "^1.0.0",
