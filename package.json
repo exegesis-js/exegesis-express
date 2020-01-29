@@ -69,7 +69,7 @@
     "coveralls": "^3.0.3",
     "express": "^4.16.4",
     "husky": "^4.0.2",
-    "lint-staged": "^9.0.2",
+    "lint-staged": "^10.0.3",
     "markdownlint-cli": "^0.18.0",
     "mocha": "^6.0.2",
     "nyc": "^14.0.0",
