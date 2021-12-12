@@ -50,7 +50,7 @@
   },
   "homepage": "https://github.com/exegesis-js/exegesis-express#readme",
   "dependencies": {
-    "exegesis": "^3.0.0"
+    "exegesis": "^4.1.0"
   },
   "devDependencies": {
     "@jwalton/semantic-release-config": "^1.0.0",
