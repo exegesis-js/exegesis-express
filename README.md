@@ -86,7 +86,7 @@ something like:
 ```js
 const exegesisMiddleware = await exegesisExpress.middleware(
   path.resolve(__dirname, "./openapi.yaml"),
-  { ignorePaths: true }
+  { ignoreServers: true }
 );
 app.use("/api/v2", exegesisMiddleware);
 ```
